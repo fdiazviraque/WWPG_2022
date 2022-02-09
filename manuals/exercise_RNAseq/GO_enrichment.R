@@ -1,7 +1,7 @@
 infiles=c("up.list","dw.list")
 
 for (f in infiles){
-  infile="dw.list"
+  infile=f
   goDB="PbANKA_v3.go" 
   ontology_type="BP"
 
@@ -27,16 +27,16 @@ for (f in infiles){
   GOdata <- new("topGOdata",
   description = title,
   ontology = ontology_type,
-allGenes = geneList, # a named numeric vector
-annot = annFUN.gene2GO, # a built-in function!
-gene2GO = geneID2GO, # the read-in gene-to-GO mappings
-nodeSize = minNumberNodesPerGO) # pruning all nodes with less than 5 genes per GO term
+  allGenes = geneList, # a named numeric vector
+  annot = annFUN.gene2GO, # a built-in function!
+  gene2GO = geneID2GO, # the read-in gene-to-GO mappings
+  nodeSize = minNumberNodesPerGO) # pruning all nodes with less than 5 genes per GO term
 
-resultFis <- runTest(GOdata, algorithm = "weight01", statistic = "fisher")
+  resultFis <- runTest(GOdata, algorithm = "weight01", statistic = "fisher")
 
-allRes <- GenTable(GOdata, classic = resultFis, orderBy = "classic", topNodes =length(resultFis@score) )
-outfile = "Result_BP_dw.txt"
-write.table(file=outfile, x=allRes[as.double(sub("< ", "", allRes[,6]))<=pvalue_max,], sep="\t", row.names=F, quote=F) 
-write.csv(file="Result_BP_dw.csv", x=allRes[as.double(sub("< ", "", allRes[,6]))<=pvalue_max,], row.names=F)
+  allRes <- GenTable(GOdata, classic = resultFis, orderBy = "classic", topNodes =length(resultFis@score) )
+  outfile = paste(f,".GO.txt",sep="")
+  write.table(file=outfile, x=allRes[as.double(sub("< ", "", allRes[,6]))<=pvalue_max,], sep="\t", row.names=F, quote=F) 
 
-head(allRes)
+  head(allRes)
+}
