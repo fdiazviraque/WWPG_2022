@@ -13,8 +13,31 @@ Index the genome reference sequence
 
 $ hisat2-build PbANKA_v3.fa PbANKA_v3_hisat2id
 
+Map the reads to the reference genome 
 
-Map the reads trying to used a bash script with iterations
+$ hisat2 --max-intronlen 1000 -x PbANKA_v3_hisat2id -1 Pb_MUT1_1.fastq.gz -2 Pb_MUT1_2.fastq.gz -S MT1.sam
+
+Convert SAM to BAM file
+
+$ samtools view -b -o MT1.bam MT1.sam
+
+Sort BAM file
+
+$ samtools sort -o MT1_sorted.bam MT1.bam
+
+Index sorted BAM file
+
+$ samtools index MT1_sorted.bam
+
+Repeat these steps for the other 5 samples
+
+Remove the sam and bam (unsorted) files
+
+$ rm MT[1-3].sam WT[1-3].sam MT[1-3].bam WT[1-3].bam 
+
+Is quite boring to repeat all the commands all the time so why dont you try to generate a bash script with iterations to do it? It's a good oportinuity to include scripting exercising also.
+
+Map the reads using a bash script (we provide one)
 
 $ chmod +x run_mapping.sh 
 
