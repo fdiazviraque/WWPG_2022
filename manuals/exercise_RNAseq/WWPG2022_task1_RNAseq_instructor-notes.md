@@ -62,15 +62,13 @@ $ chmod +x run_kallisto.sh
 
 $ ./run_kallisto.sh
 
-Statistical analysis are going to be done with Sleuth that takes as an input the transcript abundance calculated by Kallisto.
-
-First we need a text file containing the a matrix that explicit the conditions we want to compare and wich sample correspond to which conditions (hiseq_info_task1.txt).
+Statistical analysis are going to be done with Sleuth that takes as an input the transcript abundance calculated by Kallisto. But first we need a text file containing the a matrix that explicit the conditions we want to compare and wich sample correspond to which conditions (hiseq_info_task1.txt). After that Sleuth_task1.R could be run in R for differentially expression analysis.
 
 
 
 $ R
 
-
+Copy and paste commmand in Sleuth_task1.R
 
 
 # Exercise 4
