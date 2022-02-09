@@ -78,8 +78,12 @@ Kallisto needs an index of the transcript sequences.
 
 $ kallisto index -i PbANKA_v3_kallisto PbANKA_v3_transcriptome.fa
 
+Quantify the expression levels of your transcripts for all the samples. 
 
-Quantify the expression levels of your transcripts for all the samples. Again it's a good oportinuity to practice interations
+$ kallisto quant -i PbANKA_v3_kallisto -o Pb_MUT1 -b 100 Pb_MUT1_1.fastq.gz Pb_MUT1_2.fastq.gz
+
+
+Again it's a good oportinuity to practice interations:
 
 $ chmod +x run_kallisto.sh 
 
