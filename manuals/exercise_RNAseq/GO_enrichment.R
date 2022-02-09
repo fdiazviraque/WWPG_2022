@@ -1,29 +1,32 @@
-infile="dw.list"
-goDB="PbANKA_v3.go" 
-ontology_type="BP"
+infiles=c("up.list","dw.list")
 
-### loads the needed library
-library(topGO)
+for (f in infiles){
+  infile="dw.list"
+  goDB="PbANKA_v3.go" 
+  ontology_type="BP"
 
-### get and prepare the GO data base
-mappingFile <- goDB
-title <- "GO analysis"
-minNumberNodesPerGO <- 5
-pvalue_max <- 0.05
+  ### loads the needed library
+  library(topGO)
 
-geneID2GO <- readMappings(file = mappingFile)
-geneNames <- names(geneID2GO)
+  ### get and prepare the GO data base
+  mappingFile <- goDB
+  title <- "GO analysis"
+  minNumberNodesPerGO <- 5
+  pvalue_max <- 0.05
 
-### load our genes of interest
-myInterestingGenes = read.table(infile, header=FALSE, stringsAsFactors=F)
-### get all the gene id that also have a GO term
-geneList <- factor(as.integer(geneNames %in% myInterestingGenes[,1]))
-names(geneList) <- geneNames
+  geneID2GO <- readMappings(file = mappingFile)
+  geneNames <- names(geneID2GO)
+
+  ### load our genes of interest
+  myInterestingGenes = read.table(infile, header=FALSE, stringsAsFactors=F)
+  ### get all the gene id that also have a GO term
+  geneList <- factor(as.integer(geneNames %in% myInterestingGenes[,1]))
+  names(geneList) <- geneNames
 
 
-GOdata <- new("topGOdata",
-description = title,
-ontology = ontology_type,
+  GOdata <- new("topGOdata",
+  description = title,
+  ontology = ontology_type,
 allGenes = geneList, # a named numeric vector
 annot = annFUN.gene2GO, # a built-in function!
 gene2GO = geneID2GO, # the read-in gene-to-GO mappings
