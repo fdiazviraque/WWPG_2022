@@ -72,10 +72,10 @@ Copy and paste commmand in Sleuth_task1.R
 
 
 $ cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 > 0' | wc -l
-170 genes are downregulated in kcnok out parasites 
+170 genes are downregulated in knock out parasites 
 
 $ cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 < 0' | wc -l
-179
+179 genes are upregulated in knock out parasites
 
 
 # Exercise 4
