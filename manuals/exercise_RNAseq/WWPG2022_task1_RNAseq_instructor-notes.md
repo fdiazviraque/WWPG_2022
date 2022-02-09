@@ -84,5 +84,12 @@ $ cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 < 0' | wc -l
 
 ## Perform a Gene Ontology enrichment analysis (we have provided an R script to help with this)
 
+First we need a file with gene ids that are up and down regulated in knock out parasites
 
-cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 > 0' >> up_genes.txt
+cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 < 0' | awk '{print $1}' > up.list
+
+cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 > 0' | awk '{print $1}' > dw.list
+
+ Gene Ontology enrichment analysis could be performed using topGO package from R (we have provided an R script to help with this).
+ 
+ We provide the GO result as table (Result_BP_up.txt & Result_BP_dw.txt)
