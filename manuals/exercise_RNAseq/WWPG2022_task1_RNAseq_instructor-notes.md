@@ -71,6 +71,16 @@ $ R
 Copy and paste commmand in Sleuth_task1.R
 
 
+$ cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 > 0' | wc -l
+170 genes are downregulated in kcnok out parasites 
+
+$ cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 < 0' | wc -l
+179
+
+
 # Exercise 4
 
 ## Perform a Gene Ontology enrichment analysis (we have provided an R script to help with this)
+
+
+cut -f1,2,4,5 kallisto.results | awk -F '\t' '$3 < 0.01 && $4 > 0' >> up_genes.txt
