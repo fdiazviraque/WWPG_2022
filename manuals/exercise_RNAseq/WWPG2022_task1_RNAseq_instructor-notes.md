@@ -53,7 +53,7 @@ Index the fasta file so Artemis can view each chromosome separately
 $ samtools faidx PbANKA_v3.fa
 
 $ art -Dbam="Pb_MUT1_sorted.bam,Pb_MUT2_sorted.bam,Pb_MUT3_sorted.bam,Pb_WT1_sorted.bam,Pb_WT2_sorted.bam,Pb_WT3_sorted.bam" PbANKA_v3.fa &
-Sleuth
+
 Select ”Use index” so Artemis will show individual chromosomes.
 
 Right click on the BAM view, and clone the window and de-select one of the condition in each view so you can have MT and WT separately.
