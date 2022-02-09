@@ -64,6 +64,13 @@ $ ./run_kallisto.sh
 
 Statistical analysis are going to be done with Sleuth that takes as an input the transcript abundance calculated by Kallisto.
 
+First we need a text file containing the a matrix that explicit the conditions we want to compare and wich sample correspond to which conditions (hiseq_info_task1.txt).
+
+
+
+$ R
+
+
 
 
 # Exercise 4
